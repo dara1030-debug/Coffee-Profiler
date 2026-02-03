@@ -1,0 +1,292 @@
+
+/* --- COLOR PALETTE --- */
+:root {
+    --dark-brown: #4E342E;
+    --medium-brown: #795548;
+    --light-brown: #8D6E63;
+    --cream: #FFF8E1;
+    --bg-color: #F5F5F5;
+    --border-sepia: #D7CCC8;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    
+    /* --- BACKGROUND IMAGE SETUP --- */
+    background-color: #F5F5F5; 
+    background-image: url('coffee.png'); 
+    background-size: 500px; 
+    background-repeat: repeat; 
+    background-attachment: fixed;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    min-height: 100vh;
+}
+
+
+/*Login/Signup Container */
+.container {
+    width: 100%;
+    max-width: 420px; 
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(78, 52, 46, 0.15); 
+    transition: max-width 0.3s ease-in-out; 
+}
+
+/* Dashboard*/
+.container.wide {
+    max-width: 650px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--medium-brown);
+    padding-bottom: 15px;
+}
+
+h1 {
+    color: var(--dark-brown);
+    font-size: 1.6em;
+    margin: 0;
+}
+
+h2 {
+    color: var(--medium-brown);
+    font-size: 1.4em;
+    margin-bottom: 20px;
+}
+
+/* --- FORMS & INPUTS --- */
+form {
+    display: grid;
+    gap: 15px;
+}
+
+input[type="text" ], 
+input[type="password"], 
+textarea,
+select {
+    color: black !important;
+    width: 100%;
+    padding: 12px 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 8px; 
+    background-color: #fafafa; 
+    transition: all 0.3s;
+    
+}
+
+input:focus, textarea:focus {
+    color: #333;
+    border-color: var(--medium-brown);
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(121, 85, 72, 0.2);
+}
+
+/* --- BUTTONS --- */
+button {
+    background-color: var(--medium-brown);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+button:hover {
+    background-color: var(--dark-brown);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+}
+
+/* Cancel/Logout Button */
+button.secondary {
+    background-color: #BCAAA4;
+}
+button.secondary:hover {
+    background-color: #8D6E63;
+}
+
+/* --- RECIPE LIST --- */
+#recipes-list {
+    display: grid;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.recipe-list-item {
+    border: 1px solid var(--border-sepia);
+    padding: 15px 20px;
+    border-radius: 8px;
+    background: var(--cream);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recipe-list-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border-color: var(--medium-brown);
+}
+
+.recipe-list-item h3 {
+    margin: 0;
+    color: var(--dark-brown);
+    font-size: 1.1em;
+}
+
+.arrow-icon {
+    color: var(--medium-brown);
+    font-weight: bold;
+}
+
+/* --- MODAL STYLES --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: white;
+    width: 90%;
+    max-width: 500px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: var(--dark-brown);
+}
+
+.close-modal-btn {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    color: #999;
+    cursor: pointer;
+    padding: 0;
+    box-shadow: none;
+}
+.close-modal-btn:hover {
+    color: #333;
+    background: none;
+    transform: none;
+}
+
+.modal-body p {
+    color: #555;
+    line-height: 1.6;
+}
+.modal-body pre {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px dashed var(--border-sepia);
+    white-space: pre-wrap;
+    font-family: inherit;
+    color: #444;
+}
+
+/* --- UTILITIES --- */
+.hidden { display: none !important; }
+#auth-message {
+    text-align: center;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+#auth-message:not(:empty) {
+    background-color: #FFEBEE;
+    color: #C62828;
+}
+.auth-view p { text-align: center; margin-top: 15px; }
+.auth-view a { color: var(--medium-brown); text-decoration: none; font-weight: 600; }
+.auth-view a:hover { text-decoration: underline; }
+
+.auth-view p {
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+/* transform the link <a> into a button-like element */
+#toggle-auth {
+    display: block;              
+    width: 100%;
+    box-sizing: border-box;      
+    text-align: center;
+    padding: 12px 15px;
+    
+    /* Coffee Theme Styling */
+    background-color: transparent;
+    border: 2px solid var(--medium-brown);
+    color: var(--medium-brown);
+    border-radius: 8px;
+    
+    /* Text Styling */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95em;
+    transition: all 0.3s ease;
+}
+
+
+#toggle-auth:hover {
+    background-color: var(--medium-brown);
+    color: white;
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 8px rgba(121, 85, 72, 0.2);
+}
